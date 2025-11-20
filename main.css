@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #222;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    overflow-y: scroll;
+    font-family: "Poppins", sans-serif;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.section1::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(images/background.webp) top center;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2.2);
+    filter: blur(2px);
+}
+
+.section1::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(images/background-outer-layer.webp) top center;
+    background-size: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateZ(-0.5px) scale(1.5,1.6) translate(-33%, -8%);
+    font-weight: 900;
+    font-size: 15vw;
+    line-height: 210px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3),
+                 5px 5px 70px rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+.section2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #000;
+    z-index: -1;
+}
+
+.section2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        hsl(20, 30%, 8%) 0%, 
+        hsl(20, 35%, 6%) 50%,
+        hsl(20, 40%, 4%) 100%);
+    z-index: -1;
+}
+
+.section2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        hsl(20, 30%, 8%) 0%, 
+        hsl(20, 35%, 6%) 50%,
+        hsl(20, 40%, 4%) 100%);
+    z-index: -1;
+}
+
+.section2 {
+    background: linear-gradient(180deg, 
+        rgba(68, 35, 19, 0.95) 0%, 
+        rgba(45, 25, 15, 0.98) 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.section2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 199, 111, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section2-text {
+    font-weight: 900;
+    font-size: clamp(3rem, 12vw, 10rem);
+    color: white;
+    text-align: center;
+    margin-bottom: 80px;
+    text-shadow: 
+        2px 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 140, 66, 0.3),
+        0 0 60px rgba(255, 199, 111, 0.2);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+.card-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.game-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    padding: 48px 32px;
+    font-weight: 600;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-card::before {
+    content: attr(data-rank);
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    color: rgba(255, 255, 255, 0.04);
+    transform: rotate(-8deg);
+    z-index: 0;
+    line-height: 1;
+}
+
+.game-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        hsl(15, 100%, 63%), 
+        hsl(30, 100%, 70%), 
+        hsl(350, 100%, 75%), 
+        hsl(40, 100%, 75%));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    box-shadow: 
+        0 0 20px rgba(255, 140, 66, 0.4),
+        0 0 30px rgba(255, 199, 111, 0.3),
+        0 0 25px rgba(255, 182, 185, 0.25);
+    border-radius: 0 0 24px 24px;
+}
+
+.game-card:hover::after {
+    transform: scaleX(1);
+}
+
+.game-card:hover {
+    transform: translateY(-12px) scale(1.04);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 70px rgba(255, 140, 66, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.04) 100%);
+}
+
+.game-card span {
+    display: block;
+    word-wrap: break-word;
+    white-space: normal;
+    position: relative;
+    z-index: 1;
+    line-height: 1.4;
+}
+
+.game-card {
+    animation: card-entrance 0.6s ease-out backwards;
+}
+
+.game-card:nth-child(1) { animation-delay: 0.05s; }
+.game-card:nth-child(2) { animation-delay: 0.1s; }
+.game-card:nth-child(3) { animation-delay: 0.15s; }
+.game-card:nth-child(4) { animation-delay: 0.2s; }
+.game-card:nth-child(5) { animation-delay: 0.25s; }
+.game-card:nth-child(6) { animation-delay: 0.3s; }
+.game-card:nth-child(7) { animation-delay: 0.35s; }
+.game-card:nth-child(8) { animation-delay: 0.4s; }
+.game-card:nth-child(9) { animation-delay: 0.45s; }
+.game-card:nth-child(10) { animation-delay: 0.5s; }
+
+.card-scroll a {
+    display: block;
+    text-decoration: none;
+}
+
+@keyframes card-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .section2-text {
+        margin-bottom: 60px;
+    }
+    
+    .card-scroll {
+        gap: 25px;
+        padding: 15px;
+    }
+    
+    .game-card {
+        padding: 40px 24px;
+        min-height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-card {
+        font-size: 20px;
+        padding: 36px 20px;
+    }
+    
+    .game-card::before {
+        font-size: 56px;
+    }
+}
+
+body.game-page {
+    background: linear-gradient(180deg, 
+        rgba(68, 35, 19, 0.95) 0%, 
+        rgba(45, 25, 15, 0.98) 100%);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+body.game-page header {
+    background: transparent;
+    padding: 30px 0;
+    text-align: center;
+}
+
+body.game-page header h1 {
+    font-weight: 900;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+body.game-page header nav a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.25s ease;
+}
+
+body.game-page header nav a:hover {
+    color: rgba(255,255,255,0.6);
+}
+
+body.game-page section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.02) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.game-page section h2 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+body.game-page section p,
+body.game-page ol li {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+body.game-page section img {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+    body.game-page header h1 {
+        font-size: 3rem;
+    }
+
+    body.game-page section h2 {
+        font-size: 2rem;
+    }
+}
+
+body.game-page a {
+    color: #ffbb66;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+body.game-page a:hover {
+    color: #ffd699;
+}
